@@ -13,11 +13,8 @@ RUN wget https://github.com/jbangdev/jbang/releases/download/v0.122.0/jbang-0.12
 RUN unzip jruby-dist-9.4.8.0-bin.zip
 RUN unzip jbang-0.122.0.zip
 
-RUN ls -l
-
 RUN mv /opt/jruby-9.4.8.0 /opt/jruby
 RUN mv /opt/jbang-0.122.0 /opt/jbang
-RUN ls -l /opt/jbang
 
 ENV PATH="/opt/jruby/bin:/opt/jbang/bin:$PATH"
 

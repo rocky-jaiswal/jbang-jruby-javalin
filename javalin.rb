@@ -18,8 +18,11 @@ app = Javalin.create() do |config|
 logger.info('application started ...')
 
 app.before("/api/*") do |ctx|
+  logger.info('received request ...')
+  
   auth_header = ctx.header('Authorization')
-  raise StandardError.new "no Authorization header found" if auth_header.nil?
+  raise StandardError.new 'No Authorization header found' if auth_header.nil?
+  
   JWT.decode(auth_header.slice(7..(auth_header.size)), hmac_secret, true, { algorithm: 'HS256' })
 end
 
